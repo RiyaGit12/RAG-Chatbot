@@ -1,0 +1,37 @@
+# 🔐 Secret files (MOST IMPORTANT)
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# VS Code settings
+.vscode/
+
+# Node modules 
+node_modules/
+
+# dotenv folder 
+node_modules/dotenv/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Virtual environments
+venv/
+env/
+
+# Temporary files
+*.tmp
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Build files (safety)
+dist/
+build/

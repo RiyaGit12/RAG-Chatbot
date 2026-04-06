@@ -1,0 +1,85 @@
+[
+  {
+    "table_name": "animal_tourists_revenue_report_yearwise",
+    "description": "Year-wise data of animals, tourists and revenue in zoos",
+    "columns": [
+      "year",
+      "zoo_name",
+      "mammals",
+      "birds",
+      "reptiles",
+      "total_animals",
+      "tourists",
+      "revenue"
+    ]
+  },
+  {
+    "table_name": "bihar_forest_cover_geospatial_analysis_district_wise",
+    "description": "District-wise forest cover analysis",
+    "columns": [
+      "district",
+      "very_dense_forest",
+      "moderately_dense_forest",
+      "open_forest",
+      "total_forest_cover",
+      "forest_percentage",
+      "change_percentage",
+      "scrub_area"
+    ]
+  },
+  {
+    "table_name": "bihar_forest_cover_with_respect_to_national_forest_cover",
+    "description": "Comparison of Bihar forest cover with national data",
+    "columns": [
+      "category",
+      "bihar_area",
+      "india_area"
+    ]
+  },
+  {
+    "table_name": "forest_area_report_district_wise",
+    "description": "District-wise forest area",
+    "columns": [
+      "district",
+      "forest_area",
+      "year"
+    ]
+  },
+  {
+    "table_name": "nursery_report_district_wise",
+    "description": "Nursery and plant data district-wise",
+    "columns": [
+      "region",
+      "district",
+      "total_nurseries",
+      "total_plants",
+      "year"
+    ]
+  },
+  {
+    "table_name": "rfa_report_state_wise",
+    "description": "Recorded Forest Area state-wise",
+    "columns": [
+      "state",
+      "geographical_area",
+      "reserved_forest",
+      "protected_forest",
+      "unclassed_forest",
+      "total_rfa",
+      "percentage",
+      "year"
+    ]
+  },
+  {
+    "table_name": "abhiyan_basera_district_wise_anchal_wise",
+    "description": "Land allotment data under Abhiyan Basera",
+    "columns": [
+      "district",
+      "anchal",
+      "landless_surveyed",
+      "land_allotted",
+      "unfit_cases",
+      "year"
+    ]
+  }
+]
