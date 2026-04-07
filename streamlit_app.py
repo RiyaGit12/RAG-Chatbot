@@ -8,84 +8,91 @@ st.set_page_config(
 )
 
 # ---------------- SESSION STATE ----------------
-if "chat" not in st.session_state:
-    st.session_state.chat = []
+if "messages" not in st.session_state:
+    st.session_state.messages = []
 
-# 🔥 FIX: unique key
-if "input_text_riya" not in st.session_state:
-    st.session_state.input_text_riya = ""
-
-# ---------------- CSS ----------------
+# ---------------- CUSTOM CSS ----------------
 st.markdown("""
 <style>
-.chat-box {
-    background-color: #ffffff;
-    padding: 16px;
-    border-radius: 12px;
-    margin-bottom: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+.main {
+    background: linear-gradient(to right, #f5f7fb, #eef2ff);
 }
-.user { color: #0d6efd; font-weight: 600; }
-.bot { color: #198754; font-weight: 500; }
+
+.block-container {
+    padding-top: 2rem;
+}
+
+.stChatMessage {
+    border-radius: 12px;
+    padding: 10px;
+}
+
 </style>
 """, unsafe_allow_html=True)
 
 # ---------------- SIDEBAR ----------------
 with st.sidebar:
     st.title("🌿 About Project")
-    st.markdown("""
-**Bihar Government Data Chatbot**
 
-• Forest Cover  
-• Zoo Tourism  
-• Nursery Reports  
-• Land Schemes  
+    st.markdown("### 📊 Features")
+    st.markdown("- 🌳 Forest Cover")
+    st.markdown("- 🏞️ Zoo Tourism")
+    st.markdown("- 🌱 Nursery Reports")
+    st.markdown("- 📜 Land Schemes")
 
-**Tech Stack**
-- Python  
-- MySQL  
-- Gemini AI  
-- Streamlit
-""")
+    st.markdown("### ⚙️ Tech Stack")
+    st.markdown("- Python")
+    st.markdown("- MySQL")
+    st.markdown("- Groq API (LLM)")
+    st.markdown("- Streamlit")
 
-# ---------------- MAIN ----------------
+# ---------------- HEADER ----------------
 st.title("🤖 Bihar Government Data Chatbot")
-st.caption("Ask questions related to forest, environment & land data of Bihar")
-
-# ---------------- FUNCTION ----------------
-def submit():
-    question = st.session_state.input_text_riya
-
-    if not question.strip():
-        st.warning("Please type a question first.")
-        return
-
-    st.session_state.chat.append(("You", question))
-
-    with st.spinner("Fetching government data..."):
-        try:
-            from app_logic import ask_question
-            answer = ask_question(question)
-
-            if not answer or answer.strip() == "":
-                answer = "No response received. Please try again."
-
-        except Exception as e:
-            answer = f"⚠️ Backend Error: {str(e)}"
-
-    st.session_state.chat.append(("Bot", answer))
-
-# ---------------- INPUT ----------------
-st.text_input("Type your question 👇", key="input_text_riya")
-
-# ---------------- BUTTON ----------------
-# 🔥 FIX: unique key added
-st.button("Ask Question", on_click=submit, key="ask_btn_riya")
+st.caption("Ask questions about Bihar forest, tourism & land data")
 
 # ---------------- CHAT DISPLAY ----------------
+<<<<<<< HEAD
 for role, msg in st.session_state.chat:
     cls = "user" if role == "You" else "bot"
     st.markdown(
         f"<div class='chat-box'><span class='{cls}'>{role}:</span><br>{msg}</div>",
         unsafe_allow_html=True
     )
+=======
+for msg in st.session_state.messages:
+    with st.chat_message(msg["role"]):
+        st.markdown(msg["content"])
+
+# ---------------- CHAT INPUT ----------------
+user_input = st.chat_input("Type your question here...")
+
+if user_input:
+    # User message
+    st.session_state.messages.append({
+        "role": "user",
+        "content": user_input
+    })
+
+    with st.chat_message("user"):
+        st.markdown(user_input)
+
+    # Bot response
+    with st.chat_message("assistant"):
+        with st.spinner("Thinking... 🤖"):
+            try:
+                from app_logic import ask_question
+                response = ask_question(user_input)
+
+                if not response or response.strip() == "":
+                    response = "No response received. Please try again."
+
+            except Exception as e:
+                response = f"⚠️ Backend Error: {str(e)}"
+
+        st.markdown(response)
+
+    st.session_state.messages.append({
+        "role": "assistant",
+        "content": response
+    })
+
