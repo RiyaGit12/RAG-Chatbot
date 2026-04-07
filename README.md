@@ -63,9 +63,13 @@ Chatbot explained various land schemes and their purpose in Bihar.
 
 ### Example Questions
 What is the forest cover in Bihar?
+
 Which district has the highest forest cover?
+
 What are the tourism statistics in Bihar?
+
 Which zoo has the highest number of visitors?
+
 What land schemes are available in Bihar?
 
 ### Project Highlights
